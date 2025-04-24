@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,13 +13,25 @@ import jakarta.validation.Valid;
 public class Person_Controller {
 
     @RestController
-@RequestMapping("/api/person")
+@RequestMapping("valid")
 public class PersonController {
 
     @PostMapping
-    public ResponseEntity<String> valid(@Valid @RequestBody PersonDTO personDTO) {
-        return ResponseEntity.ok("valid");
+    public Result validUser(@Valid @RequestBody UserDTO userDTO) {
+        if (UserDTO.Inn([0]<5)) {
+            return Result.validUser('ООО "Рога и копыта"');
+        }
+        else (UserDTO.Inn([0]= 5-8)) {
+            return Result.validUser('ООО "Заглушкасервис"');
+        }
+        else (UserDTO.Inn([0] >=8)) {
+            return Result.validUser('ООО "Волга"');
+        }
+        return Result.validUser();
+    }
+
+   
     }
 
 }
-}
+
